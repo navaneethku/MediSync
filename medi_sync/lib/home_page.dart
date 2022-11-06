@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medi_sync/patient_profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,10 +12,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DateTime date = DateTime(2024, 11, 06);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff0068FF),
+      backgroundColor: Color(0xffE7EDFF),
       body: SafeArea(
         child: Container(
           child: SingleChildScrollView(
@@ -27,11 +30,19 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                       "MediSync",
                       style: GoogleFonts.poppins(
-                          fontSize: 36, color: Colors.white),
+                          fontSize: 36, color: Colors.black),
                     )),
-                    Container(
-                      height: 80,
-                      child: Image.asset("lib/Assets/avatar.png"),
+                    GestureDetector(
+                      onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Profile()));
+                                },
+                      child: Container(
+                        height: 80,
+                        child: Image.asset("lib/Assets/avatar.png"),
+                      ),
                     ),
                   ],
                 ),
@@ -46,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                       "Osteoporosis",
                       style: GoogleFonts.poppins(
                           fontSize: 28,
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
@@ -58,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       "Ongoing treatment",
                       style: GoogleFonts.poppins(
-                          fontSize: 14, color: Colors.white),
+                          fontSize: 14, color: Colors.black),
                     ),
                   ),
                 ),
@@ -77,14 +88,14 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(width: 20),
                           Column(
                             children: [
-                              Text("06 Nov, 2022",
+                              Text("${date.day}/${date.month}/${date.year}",
                                   style: GoogleFonts.poppins(
                                       fontSize: 20,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.w600)),
                               Text("Determination Date",
                                   style: GoogleFonts.poppins(
-                                      fontSize: 12, color: Colors.white)),
+                                      fontSize: 12, color: Colors.black)),
                             ],
                           )
                         ],
@@ -103,10 +114,10 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text("Medicines",
                               style: GoogleFonts.poppins(
-                                  fontSize: 18, color: Colors.white)),
+                                  fontSize: 18, color: Colors.black)),
                           Text("3 Total",
                               style: GoogleFonts.poppins(
-                                  fontSize: 12, color: Colors.white)),
+                                  fontSize: 12, color: Colors.black)),
                         ],
                       ),
                     ),
@@ -120,25 +131,90 @@ class _HomePageState extends State<HomePage> {
                               Icons.menu,
                               color: Colors.white,
                             )),
-                            SizedBox(width: 20),
-                        Icon(
-                          Icons.calendar_month,
-                          color: Colors.white,
-                        )
+                        SizedBox(width: 20),
+                        ElevatedButton(
+                          onPressed: () async {
+                            DateTime? newDate = await showDatePicker(
+                                context: context,
+                                initialDate: date,
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100));
+                            if (newDate == null) return;
+                            setState(() => date = newDate);
+                          },
+                          child: Icon(
+                            Icons.calendar_month,
+                            color: Colors.black,
+                          ),
+                        ),
                       ]),
                     ),
                   ],
                 ),
                 Container(
                   child: ExpansionTile(
-                    title: Text("Alendronate",style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.bold)),
-                  children: [
-                    ListTile(title: Text("Take the medicine twice a day, before having food.", style: GoogleFonts.poppins(fontSize:12),),)
-                  ],
+                    subtitle: Text("100mg"),
+                    title: Text("Alendronate",
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    children: [
+                      ListTile(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24)),
+                        tileColor: Colors.white,
+                        title: Text(
+                          "Take the medicine twice a day, before having food.",
+                          style: GoogleFonts.poppins(fontSize: 12),
+                        ),
+                      )
+                    ],
                   ),
-                )
+                ),
+                Container(
+                  child: ExpansionTile(
+                    subtitle: Text("500mg"),
+                    title: Text("Ibronate",
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    children: [
+                      ListTile(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24)),
+                        tileColor: Colors.white,
+                        title: Text(
+                          "Take the medicine twice a day, before having food.",
+                          style: GoogleFonts.poppins(fontSize: 12),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  child: ExpansionTile(
+                    subtitle: Text("400mg"),
+                    title: Text("Sebronate",
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    children: [
+                      ListTile(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24)),
+                        tileColor: Colors.white,
+                        title: Text(
+                          "Take the medicine twice a day, before having food.",
+                          style: GoogleFonts.poppins(fontSize: 12),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ],
-
             ),
           ),
         ),

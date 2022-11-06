@@ -13,6 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: TextField(
+                  child: TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: TextField(
+                  child: TextFormField(
                     obscureText: true,
                     controller: _passwordController,
                     decoration: InputDecoration(
@@ -122,11 +123,13 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
+
+                
                 SizedBox(
                   height: 10,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
