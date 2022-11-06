@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:medi_sync/home_page.dart';
 
 class LoginPage extends StatefulWidget {
- // final VoidCallback showRegisterPage;
-  //const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -25,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 220, 215, 247),
+      backgroundColor: Color(0xffE7EDFF),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -38,19 +39,29 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "Hello Again!",
-                  style: GoogleFonts.bebasNeue(
+                  "Login",
+                  style: GoogleFonts.poppins(
                     fontSize: 52,
+                    fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.start,
                 ),
                 SizedBox(height: 15),
-                Text(
-                  "Welcome back, you\'ve been missed!",
-                  style: TextStyle(
-                    fontSize: 20,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Email Address',
+                      textAlign: TextAlign.left,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
@@ -61,10 +72,11 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: BorderSide(color: Color(0xff0068FF)),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      hintText: 'Email',
+                      hintText: 'Enter your email address',
+                      prefixIcon: Image.asset("lib/Assets/email.png"),
                       fillColor: Colors.grey[200],
                       filled: true,
                     ),
@@ -73,6 +85,21 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 10,
                 ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Password',
+                      textAlign: TextAlign.left,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
@@ -80,14 +107,16 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _passwordController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+                        borderSide: BorderSide(color: Color(0xff9B9B9B)),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple),
+                        borderSide: BorderSide(color: Color(0xff0068FF)),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      hintText: 'Password',
+                      hintText: 'Enter your password',
+                      hintStyle: TextStyle(fontFamily: "sans-serif"),
+                      prefixIcon: Image.asset("lib/Assets/password.png"),
                       fillColor: Colors.grey[200],
                       filled: true,
                     ),
@@ -102,19 +131,24 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                    },
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                          color: Colors.deepPurple,
+                          color: Color(0xff0068FF),
                           borderRadius: BorderRadius.circular(12)),
                       child: Center(
                         child: Text(
                           'Sign In',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          style: GoogleFonts.poppins(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
