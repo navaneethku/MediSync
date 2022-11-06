@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       hintText: 'Enter your email address',
                       prefixIcon: Image.asset("lib/Assets/email.png"),
-                      fillColor: Colors.grey[200],
+                      fillColor: Colors.white,
                       filled: true,
                     ),
                   ),
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _passwordController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xff9B9B9B)),
+                        borderSide: BorderSide(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: 'Enter your password',
                       hintStyle: TextStyle(fontFamily: "sans-serif"),
                       prefixIcon: Image.asset("lib/Assets/password.png"),
-                      fillColor: Colors.grey[200],
+                      fillColor: Colors.white,
                       filled: true,
                     ),
                   ),
